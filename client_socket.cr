@@ -64,4 +64,6 @@ data = DNA.encrypt(msg)
 #send to server
 client.puts(data)
 
+puts "Message sent to: #{client.local_address}"
+
 client.close()
