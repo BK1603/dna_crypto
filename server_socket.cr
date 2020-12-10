@@ -1,6 +1,7 @@
 require "socket"
 require "big/big_int"
 require "./diffie_hellman"
+require "./dna_algo"
 
 p = BigInt.new("45739334052801211486383982115714395642859523615469431203095063293408205085850655737540408983027523682219373484935815737826696483347058644040214365601698451568563654746844010747338983871136644386557631185640042912749789107007323073169713214532843785763128771045651074137977867781277726926260077346003", 10)
 g = BigInt.new("405", 10)
@@ -13,18 +14,23 @@ while client = server.accept?
   client.puts("45739334052801211486383982115714395642859523615469431203095063293408205085850655737540408983027523682219373484935815737826696483347058644040214365601698451568563654746844010747338983871136644386557631185640042912749789107007323073169713214532843785763128771045651074137977867781277726926260077346003,405")
 
   # create public key
-  s = DH.new(BigInt.new(223), p, g)
-  pub_s = s.get_public_key()
+  DH.new(BigInt.new(223), p, g)
+  pub_s = DH.get_public_key()
 
   client.puts(pub_s.to_s)
   s_c = client.gets()
   pub_c = BigInt.new(s_c || "0", 10)
 
-  sec_c = s.get_secret_key(pub_c)
+  sec_c = DH.get_secret_key(pub_c)
   puts "p :", p, "\n", "g :", g, "\n"
   puts "pub_s: ", pub_s, "\n"
   puts "pub_c: ", pub_c, "\n"
   puts "Secret: ", sec_c, "\n"
+
+  DNA.new(sec_c)
+  enc_msg = client.gets
+
+  puts "Recieved: ", DNA.decrypt(enc_msg || "")
 end
 
 server.close()

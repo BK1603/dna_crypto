@@ -2,7 +2,6 @@ require "big/big_int"
 
 class DNA
   @@key : Hash(String, UInt8) = Hash(String, UInt8).new
-
   def initialize(key : BigInt)
     x = Array(UInt8).new()
     i = 0
@@ -56,6 +55,7 @@ class DNA
   end
 
   def self.decrypt(enc_msg : String)
+    msg = String.new
     enc1 = ""
     hash = {'A' => 0, 'T' => 1, 'G' => 2, 'C' => 3}
 
@@ -73,7 +73,6 @@ class DNA
 
     # phase 2
     w = ""
-    msg = String.new
     x = 0
     enc1.each_char() do |ch|
       if w.size() == 4

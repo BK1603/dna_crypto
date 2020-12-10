@@ -1,4 +1,4 @@
-require "ncurses"
+require "./../src/ncurses"
 
 NCurses.start
 NCurses.cbreak
@@ -26,3 +26,4 @@ NCurses.get_char do |ch|
   NCurses.print "\n\nPress q to quit"
 end
 
+NCurses.end

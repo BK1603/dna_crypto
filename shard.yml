@@ -1,0 +1,23 @@
+name: dna-crypto
+version: 0.1.0
+
+dependencies:
+  ncurses:
+    github: SamualLB/ncurses
+
+# authors:
+#   - name <email@example.com>
+
+# description: |
+#   Short description of dna-crypto
+
+# dependencies:
+#   pg:
+#     github: will/crystal-pg
+#     version: "~> 0.5"
+
+# development_dependencies:
+#   webmock:
+#     github: manastech/webmock.cr
+
+# license: MIT
