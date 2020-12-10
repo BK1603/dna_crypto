@@ -26,13 +26,13 @@ puts "Secret: ", sec_s, "\n"
 puts "Server gave: ", pub_s, "\n"
 
 # extract the key
-key = extract_key(pub_s)
+# key = extract_key(pub_s)
 
 # use the key to encrypt the message
-message = "hello how are you?"
-data = DNA.encrypt(key, message)
+# message = "hello how are you?"
+# data = DNA.encrypt(key, message)
 
 #send to server
-client.puts(data)
+# client.puts(data)
 
 client.close()
